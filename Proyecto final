@@ -1,0 +1,90 @@
+console.log("Pulsa las flechas para que vayan apareciendo los edificios.");
+
+class edificio{
+  
+  constructor(cColor, x, y) {
+    this.color=cColor
+    this.x = x;
+    this.y = y;
+    this.puertas = 2;
+  }
+  
+  construir() {
+    fill(this.color);
+    rect(this.x, this.y, 50);
+  }
+}
+
+
+class hospital extends edificio{
+  
+  constructor(cColor, x, y) {
+    super(cColor, x, y);
+    this.color = "red";
+  }
+  construir(){
+    fill(this.color);
+    rect(this.x, this.y, 75)
+  }
+}
+
+
+class hotel extends edificio{
+  
+  constructor(cColor, x, y) {
+    super(cColor, x, y);
+    this.color = "blue";
+  }
+  construir(){
+    fill(this.color);
+    rect(this.x, this.y, 66)
+  }
+}
+
+  
+class instituto{
+  constructor(){
+    //Diferencia de la coordenada x debe ser 50 para que el edificio sea continuo.
+   this.edi1 = new edificio("brown", 200, 150);
+   this.edi2 = new edificio("brown", 150, 150);
+
+  }
+  
+ ponerinsti(){
+   this.edi1.construir();
+   this.edi2.construir();
+  }
+
+  
+}
+
+
+function setup() {
+  createCanvas(400, 400);
+  background(119, 194, 103, 76);
+  edificio1 = new edificio('grey', 33, 33);
+  edificio2 = new edificio("grey", 100, 33);
+  hospital1 = new hospital(this.color, 200, 33);
+  hotel1 = new hotel(this.color, 33, 200);
+  instituto1 = new instituto();
+  
+}
+
+
+function keyPressed() {
+  // Haz click en la zona de canvas y luego pulsa:
+  
+    if (keyCode === UP_ARROW) {
+       instituto1.ponerinsti();
+    } 
+    if (keyCode === DOWN_ARROW) {
+       edificio1.construir();
+       edificio2.construir();
+    } 
+    if (keyCode === LEFT_ARROW) {
+        hospital1.construir();
+    } 
+    if (keyCode === RIGHT_ARROW) {
+        hotel1.construir();
+    } 
+}
